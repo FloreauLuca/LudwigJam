@@ -16,10 +16,12 @@ public class InputScript : MonoBehaviour
     [SerializeField] private Transform startPointTransform;
     [SerializeField] private Transform endPointTransform;
     [SerializeField] private Transform middlePointTransform;
+    private SpriteRenderer middlePointRenderer;
 
     private void Start()
     {
         mainCamera = Camera.main;
+        middlePointRenderer = middlePointTransform.GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -42,6 +44,16 @@ public class InputScript : MonoBehaviour
             startPointTransform.position = startPoint;
             endPointTransform.position = endPoint;
             middlePointTransform.position = (startPoint + endPoint)/2;
+
+            Vector2 direction =   startPointTransform.position - endPointTransform.position;
+            float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+            angle = 180 - angle;
+            startPointTransform.localEulerAngles = Vector3.forward * angle;
+            endPointTransform.localEulerAngles = Vector3.forward * angle;
+            middlePointTransform.localEulerAngles = Vector3.forward * angle;
+
+            middlePointRenderer.size =  new Vector2(middlePointRenderer.size.x , direction.magnitude / middlePointTransform.lossyScale.x);
+
         }
     }
 }
