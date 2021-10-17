@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rigidbody;
     private InputScript inputScript;
 
+    [SerializeField] private float inputStrength = 100.0f;
+
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
@@ -20,7 +22,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnInputUp(Vector2 direction)
     {
-        rigidbody.AddForce(direction * 10);
-        Debug.Log(direction);
+        rigidbody.AddForce(direction * inputStrength);
     }
 }

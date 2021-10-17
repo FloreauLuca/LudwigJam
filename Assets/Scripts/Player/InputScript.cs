@@ -31,7 +31,7 @@ public class InputScript : MonoBehaviour
 
     void Update()
     {
-        Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 mousePosition = mainCamera.ScreenToViewportPoint(Input.mousePosition);
         if (Input.GetMouseButtonDown(0))
         {
             pressed = true;
@@ -50,9 +50,17 @@ public class InputScript : MonoBehaviour
 
         if (pressed)
         {
-            startPointTransform.position = startPoint;
-            endPointTransform.position = endPoint;
-            middlePointTransform.position = (startPoint + endPoint)/2;
+            Vector3 zeroZ = new Vector3(1, 1, 0);
+            startPointTransform.position = mainCamera.ViewportToWorldPoint(startPoint);
+            startPointTransform.position =
+                new Vector3(startPointTransform.position.x, startPointTransform.position.y, 0);
+            endPointTransform.position = mainCamera.ViewportToWorldPoint(endPoint);
+            endPointTransform.position =
+                new Vector3(endPointTransform.position.x, endPointTransform.position.y, 0);
+            Vector2 middlePosition = (startPoint + endPoint) / 2;
+            middlePointTransform.position = mainCamera.ViewportToWorldPoint(middlePosition);
+            middlePointTransform.position =
+                new Vector3(middlePointTransform.position.x, middlePointTransform.position.y, 0);
 
             Vector2 relative =   startPointTransform.position - endPointTransform.position;
             float angle = Mathf.Atan2(relative.x, relative.y) * Mathf.Rad2Deg;
