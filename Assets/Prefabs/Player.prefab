@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: -6160767750220376532, guid: 7ba00d92aba1ee54689b9aa63e75778c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -94,6 +94,8 @@ GameObject:
   - component: {fileID: 8240307984468462970}
   - component: {fileID: 8240307984468462973}
   - component: {fileID: 8240307984468462968}
+  - component: {fileID: 1585018171}
+  - component: {fileID: 1585018176}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -136,7 +138,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &8240307984468462973
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -175,3 +177,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c4c149021a980498e97d7a6ff40014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputStrength: 20
+  maxJump: 2
+--- !u!114 &1585018171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8240307984468462972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 835591dee6ad8724dbd955c61c62da74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteIdle: {fileID: 5158404753353345565, guid: 7ba00d92aba1ee54689b9aa63e75778c, type: 3}
+  spriteUp: {fileID: -6160767750220376532, guid: 7ba00d92aba1ee54689b9aa63e75778c, type: 3}
+  spriteDown: {fileID: -8667238115605912382, guid: 7ba00d92aba1ee54689b9aa63e75778c, type: 3}
+  spriteRenderer: {fileID: 8240307984183252516}
+--- !u!114 &1585018176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8240307984468462972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46a59b10f6dd9404c94192a106a21f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGround: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  collisionRadius: 0.5
+  bottomOffset: {x: 0, y: -0.5}
