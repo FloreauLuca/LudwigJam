@@ -10,8 +10,12 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float inputStrength = 100.0f;
 
+    [SerializeField] private float jumpCoolDown = 0.1f;
+    private float timer = 0.0f;
     [SerializeField] private int maxJump = 1;
     private int currentJump = 0;
+    public int CurrentJump => currentJump;
+
 
     private PlayerSprite playerSprite;
 
@@ -22,27 +26,31 @@ public class PlayerMovement : MonoBehaviour
         inputScript = FindObjectOfType<InputScript>();
         collision = GetComponent<Collision>();
         inputScript.OnInputUpEvent += OnInputUp;
+        currentJump = maxJump;
     }
 
     void Update()
     {
-        if (collision.OnGround)
+        if (timer < jumpCoolDown)
         {
-            currentJump = 0;
+            timer += Time.deltaTime;
+        }
+
+        if (collision.OnGround && jumpCoolDown < timer)
+        {
+            currentJump = maxJump;
             playerSprite.ChangeColor(currentJump);
         }
     }
 
     private void OnInputUp(Vector2 direction)
     {
-        if (currentJump < maxJump)
+        if (currentJump > 0)
         {
             rigidbody.AddForce(direction * inputStrength);
-            if (!collision.OnGround)
-            {
-                currentJump++;
-                playerSprite.ChangeColor(currentJump);
-            }
+            currentJump--;
+            playerSprite.ChangeColor(currentJump);
+            timer = 0;
         }
     }
 }

@@ -24,8 +24,8 @@ public class BackgroundParallax : MonoBehaviour
     void Update()
     {
         Vector2 localPos;
-        localPos.x = Mathf.Lerp(minPos.x, maxPos.x, camera.position.x / (verticalBound + verticalBound));
-        localPos.y = Mathf.Lerp(maxPos.y, minPos.y, camera.position.y / (endPos.y - startPos.y));
+        localPos.x = Mathf.Lerp(maxPos.x, minPos.x, (camera.position.x + Mathf.Abs(verticalBound)) / (verticalBound + verticalBound));
+        localPos.y = Mathf.Lerp(maxPos.y, minPos.y, (camera.position.y + Mathf.Abs(startPos.y)) / (Mathf.Abs(endPos.y) + Mathf.Abs(startPos.y)));
         transform.localPosition = new Vector3(localPos.x, localPos.y, transform.localPosition.z);
     }
 }

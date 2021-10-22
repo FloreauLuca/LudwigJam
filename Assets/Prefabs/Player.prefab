@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 1585018176}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -177,8 +177,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c4c149021a980498e97d7a6ff40014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputStrength: 20
-  maxJump: 2
+  inputStrength: 100
+  maxJump: 1
 --- !u!114 &1585018171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,9 +191,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 835591dee6ad8724dbd955c61c62da74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteIdle: {fileID: 5158404753353345565, guid: 7ba00d92aba1ee54689b9aa63e75778c, type: 3}
-  spriteUp: {fileID: -6160767750220376532, guid: 7ba00d92aba1ee54689b9aa63e75778c, type: 3}
-  spriteDown: {fileID: -8667238115605912382, guid: 7ba00d92aba1ee54689b9aa63e75778c, type: 3}
+  spriteIdle:
+  - {fileID: -4682725004825781077, guid: 7ba00d92aba1ee54689b9aa63e75778c, type: 3}
+  - {fileID: 5158404753353345565, guid: 7ba00d92aba1ee54689b9aa63e75778c, type: 3}
+  - {fileID: -5069271714770940071, guid: 7ba00d92aba1ee54689b9aa63e75778c, type: 3}
+  spriteUp:
+  - {fileID: -7774217850690031510, guid: 7ba00d92aba1ee54689b9aa63e75778c, type: 3}
+  - {fileID: -6160767750220376532, guid: 7ba00d92aba1ee54689b9aa63e75778c, type: 3}
+  - {fileID: -5078756250922304867, guid: 7ba00d92aba1ee54689b9aa63e75778c, type: 3}
+  spriteDown:
+  - {fileID: 7793927537250021948, guid: 7ba00d92aba1ee54689b9aa63e75778c, type: 3}
+  - {fileID: -8667238115605912382, guid: 7ba00d92aba1ee54689b9aa63e75778c, type: 3}
+  - {fileID: 6382731758634067171, guid: 7ba00d92aba1ee54689b9aa63e75778c, type: 3}
   spriteRenderer: {fileID: 8240307984183252516}
 --- !u!114 &1585018176
 MonoBehaviour:

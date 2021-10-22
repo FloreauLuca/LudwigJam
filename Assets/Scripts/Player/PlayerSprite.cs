@@ -48,8 +48,8 @@ public class PlayerSprite : MonoBehaviour
         }
     }
 
-    public void ChangeColor(int jump)
+    public void ChangeColor(int restingJump)
     {
-        colorIndex = jump;
+        colorIndex = restingJump;
     }
 }
