@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -9,6 +10,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject startPanel;
     [SerializeField] private GameObject endPanel;
+    [SerializeField] private TextMeshProUGUI textMesh;
     [SerializeField] private GameObject gamePanel;
     
     void Start()
@@ -27,12 +29,13 @@ public class UIManager : MonoBehaviour
         gamePanel.SetActive(true);
     }
     
-    public void DisplayEnd()
+    public void DisplayEnd(float time)
     {
         gameManager.StartGame();
         startPanel.SetActive(false);
         endPanel.SetActive(true);
         gamePanel.SetActive(false);
+        textMesh.text = time + "s";
     }
 
     public void Restart()

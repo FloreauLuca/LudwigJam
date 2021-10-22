@@ -53,4 +53,9 @@ public class PlayerMovement : MonoBehaviour
             timer = 0;
         }
     }
+
+    public void PowerUp()
+    {
+        maxJump++;
+    }
 }

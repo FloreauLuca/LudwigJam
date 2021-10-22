@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     private UIManager uiManager;
     private bool playable = false;
     public bool Playable => playable;
-
+    private float timer = 0.0f;
     void Start()
     {
         uiManager = FindObjectOfType<UIManager>();
@@ -16,7 +16,10 @@ public class GameManager : MonoBehaviour
     
     void Update()
     {
-        
+        if (playable)
+        {
+            timer += Time.deltaTime;
+        }
     }
 
     public void StartGame()
@@ -26,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
-        uiManager.DisplayEnd();
+        uiManager.DisplayEnd(timer);
         playable = false;
     }
 
