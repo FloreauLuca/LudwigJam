@@ -19,6 +19,8 @@ public class InputScript : MonoBehaviour
     [SerializeField] private Transform endPointTransform;
     [SerializeField] private Transform middlePointTransform;
     private SpriteRenderer middlePointRenderer;
+    [SerializeField] private Color firstJumpColor;
+    [SerializeField] private Color secondJumpColor;
 
     public delegate void OnInputUp(Vector2 direction);
     public event OnInputUp OnInputUpEvent;
@@ -64,6 +66,7 @@ public class InputScript : MonoBehaviour
 
             if (pressed)
             {
+                middlePointRenderer.color = playerMovement.CurrentJump != 1 ? firstJumpColor : secondJumpColor;
                 startPointTransform.position = mainCamera.ViewportToWorldPoint(startPoint);
                 startPointTransform.position =
                     new Vector3(startPointTransform.position.x, startPointTransform.position.y, 0);
@@ -71,10 +74,10 @@ public class InputScript : MonoBehaviour
                 endPointTransform.position =
                     new Vector3(endPointTransform.position.x, endPointTransform.position.y, 0);
                 Vector2 middlePosition = (startPoint + endPoint) / 2;
-                middlePointTransform.position = mainCamera.ViewportToWorldPoint(middlePosition);
-                middlePointTransform.position =
-                    new Vector3(middlePointTransform.position.x, middlePointTransform.position.y, 0);
-
+                //middlePointTransform.position = mainCamera.ViewportToWorldPoint(middlePosition);
+                //middlePointTransform.position =
+                //    new Vector3(middlePointTransform.position.x, middlePointTransform.position.y, 0);
+                middlePointTransform.position = startPointTransform.position;
                 Vector2 relative = startPointTransform.position - endPointTransform.position;
                 float angle = Mathf.Atan2(relative.x, relative.y) * Mathf.Rad2Deg;
                 angle = 180 - angle;

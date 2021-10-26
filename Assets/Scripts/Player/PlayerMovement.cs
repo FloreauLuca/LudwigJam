@@ -19,12 +19,15 @@ public class PlayerMovement : MonoBehaviour
 
     private PlayerSprite playerSprite;
 
+    private AudioSource audioSource;
+
     void Start()
     {
         playerSprite = GetComponent<PlayerSprite>();
         rigidbody = GetComponent<Rigidbody2D>();
         inputScript = FindObjectOfType<InputScript>();
         collision = GetComponent<Collision>();
+        audioSource = GetComponent<AudioSource>();
         inputScript.OnInputUpEvent += OnInputUp;
         currentJump = maxJump;
     }
@@ -48,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
         if (currentJump > 0)
         {
             rigidbody.AddForce(direction * inputStrength);
+            audioSource.Play();
             currentJump--;
             playerSprite.ChangeColor(currentJump);
             timer = 0;
