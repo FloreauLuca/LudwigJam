@@ -1,5 +1,4 @@
-# LudwigJam
-
+# Frog King
 **Jump to the mountain peak but be careful not to fall !**
 
 ![ItchCover](https://user-images.githubusercontent.com/43808018/138909089-469676e7-967f-4672-a4f3-875ccbe1cae0.gif)
